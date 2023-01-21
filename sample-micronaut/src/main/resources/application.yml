@@ -1,0 +1,25 @@
+micronaut:
+  application:
+    name: sample
+mongodb:
+  uri: mongodb://sample:sample@localhost:27017/customer?authSource=admin&readPreference=primary&ssl=false
+  database: Sample
+  collection: Sample
+logger:
+  levels:
+    ROOT: INFO
+kafka:
+  enabled: true
+  bootstrap:
+    servers: localhost:9093
+  producers:
+    sample-producer:
+      acks: all
+      topic: sample-topic
+  consumers:
+    external-sample:
+      topic: external-sample-topic
+      group-id: sample-group
+    internal-sample:
+      topic: sample-topic
+      group-id: sample-group
