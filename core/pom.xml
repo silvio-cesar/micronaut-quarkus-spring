@@ -24,7 +24,7 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlinVersion}</version>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${jdk.version}</jvmTarget>
                     <compilerPlugins>
@@ -54,7 +54,7 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
-                        <version>${kotlinVersion}</version>
+                        <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

@@ -11,7 +11,10 @@
         <packaging>jar</packaging>
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
-        <kotlinVersion>1.7.22</kotlinVersion>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kotlin.version>1.7.22</kotlin.version>
         <jackson.kotlin>2.14.1</jackson.kotlin>
         <logback.version>1.4.5</logback.version>
         <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
@@ -26,8 +29,9 @@
     </repositories>
 
     <modules>
-        <module>sample-micronaut</module>
         <module>core</module>
+        <module>sample-micronaut</module>
+        <module>sample-spring</module>
     </modules>
 
     <dependencyManagement>
@@ -54,12 +58,12 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
-            <version>${kotlinVersion}</version>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlinVersion}</version>
+            <version>${kotlin.version}</version>
         </dependency>
     </dependencies>
 

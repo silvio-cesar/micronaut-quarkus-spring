@@ -1,0 +1,1 @@
+# Sample with micronaut/quarkus/spring

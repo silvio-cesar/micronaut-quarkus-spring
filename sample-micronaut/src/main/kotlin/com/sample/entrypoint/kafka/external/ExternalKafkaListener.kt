@@ -29,7 +29,7 @@ class ExternalKafkaListener(
         @MessageHeader("x-operation") operation: String) {
         logger.info("Create received {} with operation {}", externalSampleId, operation)
         if (operation == KafkaConstant.CREATE_OPERATION) {
-            createUseCase.create(sample.toDto(externalSampleId))
+            createUseCase.create(sample.toDomain(externalSampleId))
         }
     }
 }

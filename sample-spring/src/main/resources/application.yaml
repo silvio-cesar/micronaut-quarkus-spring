@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sample-spring
+  data:
+    mongodb:
+      uri: mongodb://sample:sample@localhost:27017/customer?authSource=admin&readPreference=primary&ssl=false
+      database: Sample
+  cloud:
+    stream:
+      kafka:
+        binder:
+          autoCreateTopics: false
+          brokers: localhost:9093
+          producer-properties:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+          consumer-properties:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          headerMapperBeanName: defaultKafkaHeaderMapper
+        default:
+          consumer:
+            enableDlq: true
+      function:
+        definition: internal;external
+      bindings:
+        external-in-0:
+          group: sample-spring
+          destination: external-sample-topic
+        internal-in-0:
+          group: sample-spring
+          destination: sample-topic
+        internal-out-0:
+          group: sample-spring
+          destination: sample-topic
+database:
+  collection: Sample
+logger:
+  levels:
+    ROOT: INFO

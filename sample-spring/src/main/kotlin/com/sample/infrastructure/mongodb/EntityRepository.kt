@@ -1,22 +1,26 @@
 package com.sample.infrastructure.mongodb
 
+import com.mongodb.MongoClientSettings
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.model.Filters
 import com.sample.core.Sample
-import com.sample.core.Repository
 import com.sample.core.vo.Id
-import io.micronaut.context.annotation.Property
-import jakarta.inject.Singleton
+import org.bson.codecs.configuration.CodecRegistries
+import org.bson.codecs.pojo.PojoCodecProvider
 import org.bson.conversions.Bson
-import java.lang.Exception
+import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.stereotype.Repository
+import com.sample.core.Repository as SampleRepository
 
-@Singleton
+@Repository
+@Qualifier("mongodbEntityRepository")
 class EntityRepository(
     private val mongodbClient: MongoClient,
-    @Property(name = "mongodb.database") private val database: String,
-    @Property(name = "mongodb.collection") private val collection: String
-): Repository {
+    @Value("\${spring.data.mongodb.database}") private val database: String,
+    @Value("\${database.collection}") private val collection: String
+): SampleRepository {
 
     override fun create(sample: Sample): Sample {
         val entity = sample.toEntity()
@@ -35,6 +39,9 @@ class EntityRepository(
     private fun getCollection(): MongoCollection<SampleEntity> =
         mongodbClient
             .getDatabase(database)
+            .withCodecRegistry(
+                CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+                CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())))
             .getCollection(collection, SampleEntity::class.java)
 
     companion object {

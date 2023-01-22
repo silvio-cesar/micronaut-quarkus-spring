@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sample-micronaut</artifactId>
@@ -14,7 +15,7 @@
 
     <properties>
         <packaging>jar</packaging>
-        <micronaut.version>3.8.1</micronaut.version>
+        <micronaut.version>3.8.2</micronaut.version>
         <micronaut.runtime>netty</micronaut.runtime>
         <micronaut.maven.plugin.version>3.5.2</micronaut.maven.plugin.version>
         <exec.mainClass>com.sample.AppKt</exec.mainClass>
@@ -26,7 +27,7 @@
             <dependency>
                 <groupId>io.micronaut</groupId>
                 <artifactId>micronaut-parent</artifactId>
-                <version>3.8.2</version>
+                <version>${micronaut.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -35,7 +36,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sample</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>core</artifactId>
         </dependency>
         <dependency>
@@ -119,7 +120,7 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlinVersion}</version>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${jdk.version}</jvmTarget>
                     <compilerPlugins>
@@ -188,7 +189,7 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
-                        <version>${kotlinVersion}</version>
+                        <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

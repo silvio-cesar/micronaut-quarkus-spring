@@ -19,7 +19,7 @@ kafka:
   consumers:
     external-sample:
       topic: external-sample-topic
-      group-id: sample-group
+      group-id: sample-micronaut
     internal-sample:
       topic: sample-topic
-      group-id: sample-group
+      group-id: sample-micronaut
