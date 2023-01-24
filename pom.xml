@@ -32,6 +32,7 @@
         <module>core</module>
         <module>sample-micronaut</module>
         <module>sample-spring</module>
+        <module>sample-quarkus</module>
     </modules>
 
     <dependencyManagement>

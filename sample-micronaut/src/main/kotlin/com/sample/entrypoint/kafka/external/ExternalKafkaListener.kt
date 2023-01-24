@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory
 
 @KafkaListener(
     offsetReset = OffsetReset.EARLIEST,
-    groupId = "\${kafka.consumers.external-sample.group-id}"
+    groupId = "\${kafka.consumers.external.group-id}"
 )
 class ExternalKafkaListener(
     @Named("mongodbCreateUseCase") private val createUseCase: CreateUseCase
@@ -22,11 +22,11 @@ class ExternalKafkaListener(
 
     private val logger: Logger = LoggerFactory.getLogger(ExternalKafkaListener::class.java)
 
-    @Topic("\${kafka.consumers.external-sample.topic}")
+    @Topic("\${kafka.consumers.external.topic}")
     fun receive(
         @KafkaKey externalSampleId: String,
         @MessageBody sample: ExternalSampleDto,
-        @MessageHeader("x-operation") operation: String) {
+        @MessageHeader(KafkaConstant.OPERATION_HEADER) operation: String) {
         logger.info("Create received {} with operation {}", externalSampleId, operation)
         if (operation == KafkaConstant.CREATE_OPERATION) {
             createUseCase.create(sample.toDomain(externalSampleId))

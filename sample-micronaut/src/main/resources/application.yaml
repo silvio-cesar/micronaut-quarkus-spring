@@ -13,13 +13,13 @@ kafka:
   bootstrap:
     servers: localhost:9093
   producers:
-    sample-producer:
+    internal:
       acks: all
       topic: sample-topic
   consumers:
-    external-sample:
+    external:
       topic: external-sample-topic
       group-id: sample-micronaut
-    internal-sample:
+    internal:
       topic: sample-topic
       group-id: sample-micronaut

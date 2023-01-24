@@ -1,0 +1,39 @@
+quarkus:
+  mongodb:
+    connection-string: mongodb://sample:sample@localhost:27017/customer?authSource=admin&readPreference=primary&ssl=false
+    database: Sample
+    collection: Sample
+kafka:
+  bootstrap:
+    servers: localhost:9093
+mp:
+  messaging:
+    outgoing:
+      internal-out:
+        group:
+          id: sample-quarkus
+        topic: sample-topic
+        connector: smallrye-kafka
+        key:
+          serializer: org.apache.kafka.common.serialization.StringSerializer
+    incoming:
+      internal-in:
+        group:
+          id: sample-quarkus
+        topic: sample-topic
+        connector: smallrye-kafka
+        auto:
+          offset:
+            reset: earliest
+        key:
+          deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      external-in:
+        group:
+          id: sample-quarkus
+        topic: external-sample-topic
+        connector: smallrye-kafka
+        auto:
+          offset:
+            reset: earliest
+        key:
+          deserializer: org.apache.kafka.common.serialization.StringDeserializer

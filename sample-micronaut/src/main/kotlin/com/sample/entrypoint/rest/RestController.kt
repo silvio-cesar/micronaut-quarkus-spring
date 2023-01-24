@@ -15,7 +15,7 @@ class RestController(
     @Named("mongodbCreateUseCase") private val createUseCase: CreateUseCase
 ) {
 
-    private val logger: Logger = LoggerFactory.getLogger(Controller::class.java)
+    private val logger: Logger = LoggerFactory.getLogger("RestController")
 
     @Post
     fun create(@Body dto: SampleCreateDto): HttpResponse<Void> {

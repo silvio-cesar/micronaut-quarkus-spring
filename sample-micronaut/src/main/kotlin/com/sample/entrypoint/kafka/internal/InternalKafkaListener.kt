@@ -11,12 +11,12 @@ import org.slf4j.LoggerFactory
 
 @KafkaListener(
     offsetReset = OffsetReset.EARLIEST,
-    groupId = "\${kafka.consumers.internal-sample.group-id}"
+    groupId = "\${kafka.consumers.internal.group-id}"
 )
 class InternalKafkaListener {
     private val logger: Logger = LoggerFactory.getLogger(InternalKafkaListener::class.java)
 
-    @Topic("\${kafka.consumers.internal-sample.topic}")
+    @Topic("\${kafka.consumers.internal.topic}")
     fun receive(
         @KafkaKey sampleId: String,
         @MessageBody sample: SampleDto) {
