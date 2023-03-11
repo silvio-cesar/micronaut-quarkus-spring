@@ -1,5 +1,9 @@
 version: "3.9"
 
+networks:
+  sample:
+    driver: bridge
+
 volumes:
   kafka-zookeeper-data:
     driver: local
@@ -22,6 +26,8 @@ services:
       MONGO_INITDB_DATABASE: sample
     volumes:
       - mongodb-data:/data/db
+    networks:
+      - sample
 
   kafka-zookeeper:
     container_name: kafka-zookeeper
@@ -35,6 +41,8 @@ services:
       - kafka-zookeeper-data:/bitnami
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - sample
 
   kafka:
     container_name: kafka
@@ -58,6 +66,8 @@ services:
       KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
     depends_on:
       - kafka-zookeeper
+    networks:
+      - sample
 
   kafka-ui:
     container_name: kafka-ui
@@ -70,3 +80,5 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    networks:
+      - sample

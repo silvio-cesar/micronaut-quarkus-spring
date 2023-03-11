@@ -1,8 +1,8 @@
 package com.sample.config
 
 import com.sample.core.CreateUseCase
-import com.sample.infrastructure.kafka.KafkaMessageGateway
-import com.sample.infrastructure.mongodb.EntityRepository
+import com.sample.core.MessageGateway
+import com.sample.core.Repository
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,7 +13,7 @@ class UseCaseConfig {
     @Bean
     @Qualifier("mongodbCreateUseCase")
     fun mongodbCreateUseCase(
-        repository: EntityRepository,
-        messageGateway: KafkaMessageGateway
+        @Qualifier("entityRepository") repository: Repository,
+        @Qualifier("kafkaMessageGateway") messageGateway: MessageGateway
     ): CreateUseCase = CreateUseCase(repository, messageGateway)
 }

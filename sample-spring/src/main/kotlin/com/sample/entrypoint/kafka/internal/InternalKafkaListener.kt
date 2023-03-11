@@ -19,7 +19,7 @@ class InternalKafkaListener {
       Consumer<Message<SampleDto>> { message ->
         run {
           logger.info(
-              "Sample {} with id {} processed", message.payload, message.headers[KafkaHeaders.RECEIVED_KEY])
+              "Sample {} with id {} processed", message.payload, message.headers[KafkaHeaders.RECEIVED_MESSAGE_KEY])
         }
       }
 }

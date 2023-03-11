@@ -2,7 +2,6 @@ quarkus:
   mongodb:
     connection-string: mongodb://sample:sample@localhost:27017/customer?authSource=admin&readPreference=primary&ssl=false
     database: Sample
-    collection: Sample
 kafka:
   bootstrap:
     servers: localhost:9093
@@ -37,3 +36,14 @@ mp:
             reset: earliest
         key:
           deserializer: org.apache.kafka.common.serialization.StringDeserializer
+database:
+  collection: Sample
+
+
+"%prod":
+  kafka:
+    bootstrap:
+      servers: kafka:9092
+  quarkus:
+    mongodb:
+      connection-string: mongodb://sample:sample@mongodb:27017/customer?authSource=admin&readPreference=primary&ssl=false

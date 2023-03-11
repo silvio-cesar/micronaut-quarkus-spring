@@ -20,7 +20,7 @@ class ExternalKafkaListener(
   fun receive(message: ConsumerRecord<String, ExternalSampleDto>) {
     val externalSampleId = message.key()
     val sample = message.value()
-    val operation = String(message.headers().lastHeader(KafkaConstant.OPERATION_HEADER).value())
+    val operation = message.headers()?.lastHeader(KafkaConstant.OPERATION_HEADER)?.value()?.let { String(it) }
     logger.info("Create received {} with operation {}", externalSampleId, operation)
     if (operation == KafkaConstant.CREATE_OPERATION) {
       createUseCase.create(sample.toDomain(externalSampleId))

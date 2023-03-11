@@ -26,7 +26,7 @@ class KafkaMessageGateway(
         val message = MessageBuilder
             .withPayload(dto)
             .setHeader(KafkaConstant.OPERATION_HEADER, operation)
-            .setHeader(KafkaHeaders.KEY, dto.id)
+            .setHeader(KafkaHeaders.MESSAGE_KEY, dto.id)
             .build()
         bridge.send("internal-out-0", message)
     }

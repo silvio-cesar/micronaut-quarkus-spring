@@ -22,7 +22,7 @@ class ExternalKafkaListener(
   fun external() =
       Consumer<Message<ExternalSampleDto>> { message ->
         run {
-          val externalId = message.headers[KafkaHeaders.RECEIVED_KEY].toString()
+          val externalId = message.headers[KafkaHeaders.RECEIVED_MESSAGE_KEY].toString()
           val operation = message.headers[KafkaConstant.OPERATION_HEADER].toString()
           logger.info("External sample received with externalId {} and operation {}", externalId, operation)
           if (operation == KafkaConstant.CREATE_OPERATION) {

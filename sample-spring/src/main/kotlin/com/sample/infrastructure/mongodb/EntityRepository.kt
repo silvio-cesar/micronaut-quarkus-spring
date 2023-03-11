@@ -9,13 +9,11 @@ import com.sample.core.vo.Id
 import org.bson.codecs.configuration.CodecRegistries
 import org.bson.codecs.pojo.PojoCodecProvider
 import org.bson.conversions.Bson
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Repository
 import com.sample.core.Repository as SampleRepository
 
 @Repository
-@Qualifier("mongodbEntityRepository")
 class EntityRepository(
     private val mongodbClient: MongoClient,
     @Value("\${spring.data.mongodb.database}") private val database: String,

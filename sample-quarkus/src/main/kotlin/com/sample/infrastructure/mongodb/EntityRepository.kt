@@ -17,7 +17,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty
 class EntityRepository(
     private val mongodbClient: MongoClient,
     @ConfigProperty(name = "quarkus.mongodb.database") private val database: String,
-    @ConfigProperty(name = "quarkus.mongodb.collection") private val collection: String,
+    @ConfigProperty(name = "database.collection") private val collection: String,
 ): Repository {
 
     override fun create(sample: Sample): Sample {

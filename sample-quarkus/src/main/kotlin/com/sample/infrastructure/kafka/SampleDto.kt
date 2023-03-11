@@ -1,7 +1,9 @@
 package com.sample.infrastructure.kafka
 
+import io.quarkus.runtime.annotations.RegisterForReflection
 import java.time.Instant
 
+@RegisterForReflection
 data class SampleDto(
     val id: String,
     val externalId: String?,

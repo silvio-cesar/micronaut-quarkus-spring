@@ -19,7 +19,7 @@ fun Sample.toEntity(): SampleEntity = SampleEntity(
 )
 
 fun SampleEntity.toDomain(): Sample = Sample(
-    id = Id(this.id),
+    id = Id(this.id, this.externalId),
     name = Name(this.name),
     cellPhone = CellPhone(this.cellPhone),
     email = Email(this.email),

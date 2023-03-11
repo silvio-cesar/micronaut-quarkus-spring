@@ -1,0 +1,31 @@
+[
+  {
+    "name": "kotlin.reflect.jvm.internal.ReflectionFactoryImpl",
+    "allDeclaredConstructors":true
+  },
+  {
+    "name": "kotlin.KotlinVersion",
+    "allPublicMethods": true,
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name": "org.springframework.boot.autoconfigure.condition",
+    "allPublicMethods": true,
+    "allDeclaredFields":true,
+    "allDeclaredMethods" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredConstructors": true,
+    "allPublicFields" : true
+  },
+  {
+    "name": "org.springframework.context",
+    "allPublicMethods": true,
+    "allDeclaredFields":true,
+    "allDeclaredMethods" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredConstructors": true,
+    "allPublicFields" : true
+  }
+]
